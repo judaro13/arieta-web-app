@@ -5,7 +5,7 @@ class CreateResources < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :resource_type, default: "store "
       t.string :docker_image
-      t.string :logo_path
+      t.string :internal_port
       t.timestamps
     end
   end

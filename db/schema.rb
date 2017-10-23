@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20171018161136) do
     t.string "name"
     t.string "resource_type", default: "store "
     t.string "docker_image"
-    t.string "logo_path"
+    t.string "internal_port"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
