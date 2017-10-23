@@ -1,0 +1,12 @@
+<ul class="list-group" style="height: 530px; overflow-y: auto;">
+  <% @resources.each do |resource|%>
+    <li class="list-group-item">
+      <div data-toggle="tooltip" title="image: <%= resource.docker_image %>">
+        <%= resource.name %>
+      </div>
+
+      <%= link_to image_tag("cloud-upload.svg"), service_path(resource), remote: true, method: :post, title: "mark for deploy" %>
+
+      <%= link_to image_tag("trashcan.svg"), resource_path(resource), remote: true, method: :delete, data: { confirm: 'Are you sure?' }, title: "delete resource" %> </li>
+  <% end %>
+</ul>

@@ -1,0 +1,47 @@
+
+<h1>Deployment View </h1>
+
+<div id="notifications_id" style="display: none;" ></div>
+
+
+<div class="container" style="margin: 0; margin-right: 0; max-width: 100%">
+  <div class="row">
+    <div class="col-2" >
+      <div id="home_resources_display" style="border-style: solid;border-radius: 7px;">
+          <%= render :file => 'home/_resources' %>
+      </div>
+      <br />
+      <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#newResource">New resource</button>
+    </div>
+    <div class="col-10" style="padding-left: 0;">
+      <div style="border-style: dashed; border-radius: 5px; height: 100%;">
+        <%= render :file => 'home/_services' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <br />
+      <div id="messages" class="console-view" />
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="newResource" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_resource_button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render :file => 'home/_new_resource' %>
+      </div>
+    </div>
+  </div>
+</div>

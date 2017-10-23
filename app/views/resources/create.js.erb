@@ -1,0 +1,13 @@
+<% if  @resource.errors.any? %>
+  $('#new_resoruce_error_explanation').empty();
+  $('#new_resoruce_error_explanation').append("<%= escape_javascript render(:partial => 'resources/errors', :locals => { :resource => @resource }) %>");
+<% else %>
+  $('#close_resource_button').click();
+  $('#new_resoruce_error_explanation').empty();
+  $('#new_resource_form').find("input[type=text], textarea").val("");
+  $('#home_resources_display').empty();
+  $("#home_resources_display").append("<%= escape_javascript render(:partial => 'home/resources', :locals => { :resources => @resources }) %>");
+  $("#notifications_id").empty();
+  $("#notifications_id").append('<div class="alert alert-success" role="alert">Successfully done!</div>');
+  $("#notifications_id").fadeIn(3000).delay(5000).fadeOut('slow');
+<% end%>

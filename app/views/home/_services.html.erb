@@ -1,0 +1,13 @@
+
+<% @services.each do |service|%>
+  <div class="card draggable"style="width: 10rem;" >
+    <div class="card-body">
+      <h4 class="card-text">
+        <%= image_tag((service.resource.resource_type)+".png", class: "small-img #{service.status}")%>
+        <%= service.name %>
+      </h4>
+      <p class="card-text"><%= service.resource.docker_image %></p>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,7 @@
+<% if  @resource.errors.any? %>
+  $("#notifications_id").empty();
+  $("#notifications_id").append("<div class="alert alert-warning" role="alert">This resource cant be destroy, delete all deployed resources related with this one.</div>");
+<% else %>
+  $('#home_resources_display').empty();
+  $("#home_resources_display").append("<%= escape_javascript render(:partial => 'home/resources', :locals => { :resources => @resources }) %>");
+<% end%>
