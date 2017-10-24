@@ -17,5 +17,16 @@
 //= require_tree ./channels
 
 $(function() {
-    $( ".draggable" ).draggable({ cursor: "move" });
+    $( ".draggable" ).draggable({ cursor: "move", containment: "parent", cancel: "card-body", scroll: true,
+    stop: function(){
+      var finalxPos = $(this).position().left;
+      var finalyPos = $(this).offset().top -22;
+      var id =this.getAttribute("serviceId");
+      $.ajax({
+        method: "PATCH",
+        url: "/services/"+id,
+        data: { service:{position_x: finalxPos, position_y: finalyPos }}
+      })
+    }
+  })
 });

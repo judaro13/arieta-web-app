@@ -53,20 +53,60 @@ h2.login{
 }
 
 .pending{
-  background-color: lightgray;
-  border-radius: 10px;
-}
-.error{
-  background-color: #ef3b4a;
-  border-radius: 10px;
+  background-color: #e7e8ea !important;
 }
 
+.error{
+  background-color: #f5c6cb !important;
+  color: #721c24 !important;
+  border-color: #721c24;
+}
+
+
 .deploying{
-  background-color: #ffc107;
-  border-radius: 10px;
+  background-color: #fff3cd !important;
+  color: #856404 !important;
+  border-color: #856404;
+  -webkit-animation: DEPLOYING-SERVICE 2s infinite;  /* Safari 4+ */
+  -moz-animation: DEPLOYING-SERVICE 2s infinite;  /* Fx 5+ */
+  -o-animation: DEPLOYING-SERVICE 2s infinite;  /* Opera 12+ */
+  animation: DEPLOYING-SERVICE 2s infinite;
 }
 
 .deployed{
-  background-color: #39dd5a;
-  border-radius: 10px;
+  background-color: #d4edda !important;
+  color: #155724 !important;
+  border-color: #155724;
+}
+
+.card{
+  padding: 0;
+}
+
+.card-body{
+  background-color: white;
+  color: black;
+}
+
+
+.green-image{
+  fill: darkslateblue;
+}
+
+
+.deploy-buttons{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-bottom: 10px;
+  padding-right: 25px;
+}
+
+@-webkit-keyframes DEPLOYING-SERVICE {
+  0%, 49% {
+    background-color: #ffeeba;
+  }
+  50%, 100% {
+    background-color: #ffe69e;
+  }
 }

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :resources
   resources :services
   post '/services/:id', to: 'services#create'
+  patch '/services/:id', to: 'services#update'
 end
