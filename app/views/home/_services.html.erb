@@ -16,7 +16,7 @@
       </p>
       <%= link_to image_tag("gear.svg"), "#", remote: true, method: :post, title: "configure", 'data-target' =>  "#serviceSettings", 'data-toggle' => "modal" %>
       <%= link_to image_tag("rocket.svg", class: "green-image"), "#", remote: true, method: :post, title: "individual deploy" %>
-      <%= link_to image_tag("trashcan.svg"), "#", remote: true, method: :post, title: "delete" %>
+      <%= link_to image_tag("trashcan.svg"), service, remote: true, method: :delete, title: "delete" %>
       <%= link_to image_tag("cloud-download.svg"), "#", remote: true, method: :post, title: "undeploy" %>
     </div>
   </div>

@@ -27,9 +27,10 @@ class ServicesController < ApplicationController
   end
 
   def destroy
-    @resource = Resource.find(params[:id])
-    @resource.destroy
-    @resources = Resource.all
+    if @service = Service.find(params[:id])
+      @service.destroy
+    end
+    @services = Service.all
     respond_to do |f|
       f.js
     end
