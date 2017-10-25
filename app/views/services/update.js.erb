@@ -1,0 +1,10 @@
+<% if  @service.errors.any? %>
+  $('#service_error_explanation').empty();
+  $('#service_error_explanation').append("<%= escape_javascript render(:partial => 'resources/errors', :locals => { :resource => @service }) %>");
+<% else %>
+  $('#close_service_button').click();
+  $('#service_error_explanation').empty();
+
+<% end%>
+
+makeDraggable();

@@ -16,6 +16,14 @@ class ServicesController < ApplicationController
     end
   end
 
+  def show
+    @service = Service.find(params[:id])
+    @services = Service.all
+    respond_to do |f|
+      f.js
+    end
+  end
+
   def update
     if @service = Service.find(params[:id])
       @service.update(service_params)
@@ -38,6 +46,6 @@ class ServicesController < ApplicationController
 
   private
     def service_params
-      params.require(:service).permit(:id,:max_gpu,:min_gpu,:max_memory,:min_memory,:position_x,:position_y,:pmml_data,:input_data,:input_data_path,:outpu_data_path,:in_connection,:out_connection,:service_ip,:service_port,:service_full_path,:status )
+      params.require(:service).permit(:id,:max_gpu,:min_gpu,:max_memory,:min_memory,:position_x,:position_y,:pmml_data_path,:input_data,:input_data_path,:outpu_data_path,:in_connection,:out_connection,:service_ip,:service_port,:service_full_path,:status,:connection_settings )
     end
 end

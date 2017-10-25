@@ -2,20 +2,4 @@
 $('#services-widget').empty();
 $("#services-widget").append("<%= escape_javascript render(:partial => 'home/services', :locals => { :services => @services }) %>");
 
-$('.draggable').draggable({
-  cursor: "move",
-  containment: "parent",
-  cancel: "card-body",
-  scroll: true,
-  stop: function(){
-    var finalxPos = $(this).position().left;
-    var finalyPos = $(this).offset().top -22;
-    var id =this.getAttribute("serviceId");
-    $.ajax({
-      method: "PATCH",
-      url: "/services/"+id,
-      data: { service:{position_x: finalxPos, position_y: finalyPos }}
-    })
-  }
-
-});
+makeDraggable();

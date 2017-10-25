@@ -12,13 +12,14 @@ class CreateServices < ActiveRecord::Migration[5.0]
       t.string :position_x
       t.string :position_y
 
-      t.text :pmml_data
+      t.text :pmml_data_path
       t.text :input_data
       t.string :input_data_path
       t.string :outpu_data_path
 
       t.string :in_connection
       t.string :out_connection
+      t.string :connection_settings
 
       t.string :service_ip
       t.string :service_port

@@ -1,0 +1,2 @@
+$('#serviceSettingBody').empty();
+$('#serviceSettingBody').append("<%= escape_javascript render(:partial => 'services/configuration', :locals => { :service => @service }) %>");

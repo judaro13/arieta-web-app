@@ -5,7 +5,7 @@
   <% position += " position: absolute;" if service.position_x || service.position_y%>
   <% position += " left: #{service.position_x.to_i}px;" if service.position_x%>
   <% position += " top: #{service.position_y.to_i - 183 +54}px;" if service.position_y%>
-  <div class="card draggable  <%= style %>" style="<%=position%>" serviceId="<%= service.id%>" >
+  <div class="card draggable  <%= style %>" style="<%=position%>" serviceId="<%= service.id%>" toService="<%=service.out_connection%>" id="draggable-element-<%= service.id%>">
     <h6 class="card-header  <%= style %>" >
       <%= image_tag((service.resource.resource_type)+".png", class: "small-img ")%>
       <%= service.name %>
@@ -14,10 +14,10 @@
       <p class="card-text">
         <%= service.resource.docker_image %>
       </p>
-      <%= link_to image_tag("gear.svg"), "#", remote: true, method: :post, title: "configure", 'data-target' =>  "#serviceSettings", 'data-toggle' => "modal" %>
-      <%= link_to image_tag("rocket.svg", class: "green-image"), "#", remote: true, method: :post, title: "individual deploy" %>
-      <%= link_to image_tag("trashcan.svg"), service, remote: true, method: :delete, title: "delete" %>
-      <%= link_to image_tag("cloud-download.svg"), "#", remote: true, method: :post, title: "undeploy" %>
+      <%= link_to image_tag("gear.svg"), service, remote: true, method: :get, title: "configure", 'data-target' =>  "#serviceSettings", 'data-toggle' => "modal" %>
+      <%= link_to image_tag("rocket-green.svg"), "#", remote: true, method: :post, title: "individual deploy" %>
+      <%= link_to image_tag("trashcan-red.svg"), service, remote: true, method: :delete, title: "delete" %>
+      <%= link_to image_tag("cloud-download-red.svg"), "#", remote: true, method: :post, title: "undeploy" %>
     </div>
   </div>
 

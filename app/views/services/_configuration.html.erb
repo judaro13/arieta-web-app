@@ -1,0 +1,66 @@
+<%= form_with model: @service do |form| %>
+
+   <div id="service_error_explanation">
+   </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <%= form.label "max GPU  (m)" %><br>
+        <%= form.text_field :max_gpu,  class: "form-control"%>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <%= form.label "min GPU  (m)" %><br>
+        <%= form.text_field :min_gpu,  class: "form-control"%>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <%= form.label "max memory (Mi)" %><br>
+        <%= form.text_field :min_memory,  class: "form-control"%>
+      </div>
+    </div>
+    <div class="col">
+
+      <div class="form-group">
+        <%= form.label "min memory (Mi)" %><br>
+        <%= form.text_field :max_memory,  class: "form-control"%>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :pmml_data_path %><br>
+    <%= form.text_field :pmml_data_path,  class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :input_data_path %><br>
+    <%= form.text_field :input_data_path,  class: "form-control"%>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :outpu_data_path %><br>
+    <%= form.text_field :outpu_data_path,  class: "form-control"%>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.label :out_connection %><br>
+    <%= form.select :out_connection, @services.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }, { :class => 'form-control' }%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :connection_settings %><br>
+    <%= form.text_field :connection_settings,  class: "form-control"%>
+  </div>
+
+  <p>
+    <%= form.submit "Save", class: "btn btn-primary", style: "float:right;" %>
+  </p>
+<% end %>

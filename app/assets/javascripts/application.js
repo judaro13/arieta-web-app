@@ -16,12 +16,40 @@
 //= require_tree .
 //= require_tree ./channels
 
-$(function() {
-    $( ".draggable" ).draggable({ cursor: "move", containment: "parent", cancel: "card-body", scroll: true,
+function drawLines() {
+  $(".jquery-line").remove();
+  console.log($('[id^="draggable-element-"]'))
+  $('[id^="draggable-element-"]').each(function () {
+    var initial = this;
+    var toElement = this.getAttribute("toService")
+    if(toElement){
+      var element = $("#draggable-element-"+toElement)
+      var fromPoint = $(this).offset();
+      var toPoint = element.offset();
+
+      var from = function () {},
+      to = new String('to');
+      from.y = fromPoint.top+$(this).height()/2;
+      from.x = fromPoint.left+$(this).width()+5;
+      to.y = toPoint.top+element.height()/2;
+      to.x = toPoint.left;
+      $.line(from, to);
+
+      $('#services-widget').append(
+        "<img class=\"jquery-line\"src=\"/assets/right.svg\" style=\"width:auto;height:auto;position:absolute; left:"+ (element.position().left-6) +"px;top:"+ ((element.position().top+element.height()/2)-8) +"px\"></img>"
+      );
+    }
+  });
+}
+
+
+function makeDraggable() {
+  $( ".draggable" ).draggable({ cursor: "move", scroll: true, cancel: "card-body", containment: "parent",
     stop: function(){
       var finalxPos = $(this).position().left;
-      var finalyPos = $(this).offset().top -22;
+      var finalyPos = $(this).offset().top - 22;
       var id =this.getAttribute("serviceId");
+      drawLines();
       $.ajax({
         method: "PATCH",
         url: "/services/"+id,
@@ -29,4 +57,11 @@ $(function() {
       })
     }
   })
+}
+
+$(function() {
+
+    drawLines();
+    makeDraggable();
+
 });
