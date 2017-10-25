@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :services
   post '/services/:id', to: 'services#create'
   patch '/services/:id', to: 'services#update'
+  post '/services/:id/deploy', to: 'services#deploy', as: "deploy_service"
+  post '/services/deploy', to: 'services#deploy_all'
+  get '/services/:name/status', to: 'services#status'
 end

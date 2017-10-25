@@ -22,6 +22,6 @@ class ResourcesController < ApplicationController
 
   private
     def resource_params
-      params.require(:resource).permit(:name, :docker_image, :resource_type, :internal_port)
+      params.require(:resource).permit(:name, :docker_image, :resource_type, :description, :internal_port)
     end
 end

@@ -3,7 +3,7 @@
   $('#new_resoruce_error_explanation').append("<%= escape_javascript render(:partial => 'resources/errors', :locals => { :resource => @service }) %>");
 <% else %>
   $('#new_resoruce_error_explanation').empty();
-  $('#services-widget').empty();
+  $('[id^="draggable-element-"]').remove();
   $("#services-widget").append("<%= escape_javascript render(:partial => 'home/services', :locals => { :services => @services }) %>");
   $("#notifications_id").empty();
   $("#notifications_id").append('<div class="alert alert-success" role="alert">Successfully done!</div>');

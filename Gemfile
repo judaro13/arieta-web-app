@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'ruby-kafka'
 gem 'pry'
 gem 'redis', '~> 3.0'
+gem 'multipart-post'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

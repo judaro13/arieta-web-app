@@ -1,0 +1,36 @@
+var interval= setInterval(function(){ getStatus(); }, 1000);
+updateStatus("deploying");
+
+function updateStatus(status){
+  $.ajax({
+    method: "PATCH",
+    url: "/services/<%= @service.id%>",
+    data: { service: { status: status } },
+
+    success: function(data){
+      var element = $("#draggable-element-<%=@service.id%>")
+      element.removeClass("pending").removeClass("deploying").removeClass("deployed").addClass(status);
+      element.find("h6").removeClass("pending").removeClass("deploying").removeClass("deployed").addClass(status);
+    }
+  });
+}
+
+function getStatus(){
+  $.ajax({
+    method: "GET",
+    url: "/services/<%= @service.name%>/status",
+    success: function(data){
+      if(data.indexOf("Err") != -1){
+        updateStatus("error");
+        clearInterval(interval);
+      }
+      else if(data.indexOf("Runn") != -1){
+        updateStatus("deployed");
+        clearInterval(interval);
+      }
+    },
+    error: function(data){
+      clearInterval(interval);
+    }
+  });
+}

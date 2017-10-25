@@ -6,7 +6,7 @@ class ServicesController < ApplicationController
     resource = Resource.where(id: params[:id]).first
     @service = Service.new
     if resource
-      @service = resource.services.create(name: resource.name+" #{rand(0...999)}", resource_id: resource.id, topic: resource.name, status: "pending")
+      @service = resource.services.create(name: resource.name.downcase+"-#{rand(0...999)}", resource_id: resource.id, topic: resource.name, status: "pending")
       @service.save
     end
 
@@ -28,6 +28,7 @@ class ServicesController < ApplicationController
     if @service = Service.find(params[:id])
       @service.update(service_params)
     end
+    @services = Service.all
     respond_to do |f|
       f.js
     end
@@ -43,6 +44,30 @@ class ServicesController < ApplicationController
       f.js
     end
   end
+
+  def status
+    @services = Service.all
+    val = ArietaApi.new.service_status(params[:name])
+    respond_to do |f|
+      f.html { render :inline => val.body }
+    end
+  end
+
+  def deploy
+    if @service = Service.find(params[:id])
+      File.write("/tmp/service_deploy.json", [ @service.deploy_data ].to_json )
+      api = ArietaApi.new
+      api.deploy("/tmp/service_deploy.json")
+    end
+    @services = Service.all
+    respond_to do |f|
+      f.js
+    end
+  end
+
+
+
+
 
   private
     def service_params

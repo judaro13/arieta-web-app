@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20171018161136) do
   create_table "resources", force: :cascade do |t|
     t.string "name"
     t.string "resource_type", default: "store "
+    t.text "description"
     t.string "docker_image"
     t.string "internal_port"
     t.datetime "created_at", null: false
